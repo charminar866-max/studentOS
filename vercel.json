@@ -1,0 +1,16 @@
+{
+  "crons": [
+    {
+      "path": "/api/jobs/auto-update",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/exams/scrape",
+      "schedule": "0 */2 * * *"
+    },
+    {
+      "path": "/api/exams/reminders/run",
+      "schedule": "0 * * * *"
+    }
+  ]
+}
