@@ -6,11 +6,11 @@
     },
     {
       "path": "/api/exams/scrape",
-      "schedule": "0 */2 * * *"
+      "schedule": "0 0 * * *"
     },
     {
       "path": "/api/exams/reminders/run",
-      "schedule": "0 * * * *"
+      "schedule": "0 1 * * *"
     }
   ]
 }
