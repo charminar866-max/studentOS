@@ -1,0 +1,29 @@
+steps:
+  - name: Checkout
+    uses: actions/checkout@v4
+
+  - name: Use Node.js 20
+    uses: actions/setup-node@v4
+    with:
+      node-version: '20'
+      cache: 'npm'
+
+  - name: Install dependencies
+    run: npm ci
+
+  - name: Clean previous outputs
+    run: rm -rf .next .next_dev .next_build || true
+
+  - name: Build (production)
+    run: |
+      set -e
+      npm run build
+
+  - name: List .next
+    run: ls -la .next || true
+
+  - name: Upload .next artifact
+    uses: actions/upload-artifact@v4
+    with:
+      name: next-build
+      path: .next
