@@ -1,0 +1,36 @@
+name: CI - Next.js build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Install, build, and verify .next
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Clean previous outputs
+        run: rm -rf .next .next_dev .next_build || true
+
+      - name: Build (production)
+        run: npm run build
+
+      - name: Verify .next
+        run: |
+          test -d .next
+          ls -la .next
