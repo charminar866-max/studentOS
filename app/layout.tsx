@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import './globals.css';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "StudentOS",
-  description: "StudentOS application",
+  title: 'StudentOS',
+  description: 'StudentOS application',
 };
 
 export default function RootLayout({
@@ -12,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="min-h-screen bg-white text-slate-900">{children}</body>
     </html>
   );
 }
