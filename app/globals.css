@@ -1,8 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Basic global resets and defaults */
+/* Global resets and defaults */
 :root {
   --bg: #ffffff;
   --text: #0f172a; /* slate-900 */
@@ -15,9 +13,8 @@
 }
 
 html,
-body,
-#__next {
-  height: 100%;
+body {
+  min-height: 100vh;
 }
 
 body {
@@ -33,4 +30,38 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Custom animation fallbacks for modals and dropdowns */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideFromRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideFromTop {
+  from { transform: translateY(-10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-in {
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: forwards;
+}
+
+.fade-in {
+  animation-name: fadeIn;
+}
+
+.slide-in-from-right {
+  animation-name: slideFromRight;
+}
+
+.slide-in-from-top-2 {
+  animation-name: slideFromTop;
 }
